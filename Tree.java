@@ -37,5 +37,23 @@ public class Tree {
 
         Tree letters = new Tree(treeRoot);
         letters.print();
+
+        // Created an instance of the Tree
+        Tree tree = new Tree(treeRoot);
+
+        //Removed grandchild2 from the tree
+        child2.removeChild(grandchild2);
+
+        //Printed the tree
+        tree.print();
+
+        //Removed "O" from the tree
+        treeRoot.removeChild("O");
+
+        //Printed the tree again
+        tree.print();
+
+
+
     }
 }

@@ -27,28 +27,40 @@ public class TreeNode {
 
     //removeChild() with TreeNode parameter
     public void removeChild(TreeNode childToRemove){
+      //If this node has no children or wrote an if statement that checks whether the current node has no children. Use ArrayList’s .isEmpty() function on this.children 
         if (this.children.isEmpty()) {
-           return;
-        } else if(this.children.contains(childToRemove)){
-            removeChild(childToRemove);
+           return;//the function would return if above condition is met
+        } 
+        //added an else if statement that checks whether this.children includes childToRemove
+        else if(this.children.contains(childToRemove)){
+            removeChild(childToRemove);//the function would remove child from this.children if above condition is met
             return;
-        }else {
+        } 
+        else {
+          //a for loop through each child of this.children.
             for (TreeNode child : this.children) {
-            removeChild(childToRemove);    
+            removeChild(childToRemove);   // Each child calls removeChild() with the same argument: childToRemove.
             }
         }
         }
     
     public void removeChild(Object targetData){
-        if (this.children.isEmpty()) {
-            return;
+       //If this node has no children or wrote an if statement that checks whether the current node has no children. Use ArrayList’s .isEmpty() function on this.children 
+      if (this.children.isEmpty()){
+          return;//the function would return if above condition is met
         }
+        //create a for loop that checks each child in this.children.
         for (TreeNode child : this.children) {
+          //For each child, if its data matched the target data
           if (child.data == targetData) {
-            removeChild(child);
+            removeChild(child);// would use .remove(child) on this.children
+            return; // and return.
           }  
         }
+        //created a for loop that iterated through each TreeNode child in this.children
+        //Note:  This for loop code will only be reached if the for loop above it did not find any matching child data in this.children
         for (TreeNode child : this.children) {
+          //have each child instance call .removeChild() with the argument targetData.
             child.removeChild(targetData);
         }
     }
