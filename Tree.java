@@ -24,6 +24,14 @@ public class Tree {
         }
     }
 
+    //defined a public void method, .depthFirstTraversal() that takes a single TreeNode parameter named current.
+    public void depthFirstTraversal(TreeNode current){
+        System.out.print(current.data + " ");
+        for (TreeNode child : current.children) {
+            depthFirstTraversal(child);
+        }
+    }
+
     public static void main(String[] args) {
         TreeNode treeRoot = new TreeNode("S");
         TreeNode child1 = new TreeNode("N");
@@ -52,6 +60,8 @@ public class Tree {
 
         //Printed the tree again
         tree.print();
+
+        tree.depthFirstTraversal(treeRoot);
 
 
 
