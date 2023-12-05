@@ -20,10 +20,39 @@ public class TreeNode {
         this.children.add(child);
     }
 
-    //addchild() method with parameter Object data
+    //addChild() method with parameter Object data
     public void addchild(Object childData){
         this.children.add(new TreeNode(childData));
     }
+
+    //removeChild() with TreeNode parameter
+    public void removeChild(TreeNode childToRemove){
+        if (this.children.isEmpty()) {
+           return;
+        } else if(this.children.contains(childToRemove)){
+            removeChild(childToRemove);
+            return;
+        }else {
+            for (TreeNode child : this.children) {
+            removeChild(childToRemove);    
+            }
+        }
+        }
+    
+    public void removeChild(Object targetData){
+        if (this.children.isEmpty()) {
+            return;
+        }
+        for (TreeNode child : this.children) {
+          if (child.data == targetData) {
+            removeChild(child);
+          }  
+        }
+        for (TreeNode child : this.children) {
+            child.removeChild(targetData);
+        }
+    }
+
     
   public static void main(String[] args) {
     TreeNode root = new TreeNode("test");// instantiate a TreeNode root with argument of "test"
